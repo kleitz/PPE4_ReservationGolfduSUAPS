@@ -14,6 +14,7 @@ html, body {
 #titre_principal {
     margin-top: 10px;
     color: #2162ff;
+    text-shadow: 3px 3px 2px white;
 }
 
 #conteneur_header {
@@ -28,19 +29,46 @@ html, body {
 }
 
 #barre_connexion {
-    height: 40px;
-    padding: 5px;
-    padding-top: 10px;
+    font-size: 12px;
+    height: 45px;
+    padding: 10px;
     background-image: radial-gradient(white, #b2dede);
+    color: #1f59ff;
+}
+
+#pseudo{
+    margin-right: 10px;
+    color: black;
+    border-radius: 6px;
+}
+
+
+
+#mot_de_passe{
+    color: black;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+#btn_connexion{
+    height: 25px;
+    background-image: radial-gradient(white, #b2dede);
+    border-radius: 6px;
+}
+
+#connexion{
+    visibility: visible;
 }
 
 .menu_gauche {
-
     padding: 15px;
     height: 600px;
-
     background-image: linear-gradient(220deg, white, #2e81ff);
 
+}
+
+.inline-block{
+    display: inline-block;
 }
 
 #conteneur {
@@ -48,7 +76,8 @@ html, body {
 }
 
 .contenu {
-    background-color: whitesmoke;
+    background-image: linear-gradient(60deg, white, #d4f5ed);
+
     padding: 5px;
 
 }

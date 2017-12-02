@@ -12,14 +12,14 @@
 <div class="barre"></div>
 <div id="conteneur_header">
     <div class="row">
-        <div class="col-md-3"><img src="../logo_suaps.png" alt="logo1"></div>
+        <div class="col-md-3"><img src="../logo_suaps.png" alt="logo1"/></div>
         <div class="col-md-7" id="titre_principal">
 
             <h2>
                 RESERVATION GOLF DE LA WANTZENAU
             </h2>
         </div>
-        <div class="col-md-2"> <img src="../logo_droite.png" alt="logo2">
+        <div class="col-md-2"><img src="../logo_droite.png" alt="logo2"/>
         </div>
     </div>
 </div>
@@ -27,11 +27,24 @@
 
 <div id="barre_connexion">
     <div class="row">
-        <div class="col-md-12">
-            utilisateur connecté
+        <div id="connexion" class="col-md-6">
+            <form method="POST" action="../trt/connexion.php">
+
+                <label for="pseudo">Pseudo : </label>
+                <input type="text" id="pseudo" name="pseudo" value="pseudo">
+
+                <label for="mot_de_passe">Mot de passe : </label>
+                <input type="password" id="mot_de_passe" name="mot_de_passe" value="pseudo"/>
+
+                <input type="submit" id="btn_connexion"  value="se connecter">
+            </form>
         </div>
+
     </div>
+
+
 </div>
+
 
 <div id="conteneur">
     <div class="row">
