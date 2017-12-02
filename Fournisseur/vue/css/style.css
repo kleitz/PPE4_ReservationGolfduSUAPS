@@ -1,0 +1,95 @@
+
+@import url('https://fonts.googleapis.com/css?family=Arimo|Lora|Playfair+Display|Raleway|Titillium+Web');
+
+
+#main{
+    padding-top:10px;
+    background-color: #ddd;
+    font-family: 'Titillium Web', sans-serif;
+    display:flex;
+    flex-flow: row nowrap;
+}
+#bonjour{
+    font-size:1.4em;
+    padding-left:15px;
+    color:black;
+    background-color: whitesmoke; 
+    font-family: 'Titillium Web', sans-serif;
+}
+#part1{
+    padding-left:25px;
+    width:70%;
+}
+
+#part2{
+    padding-left:15px;
+    width:30%;
+}
+
+.input_txt{
+    width:90%;
+}
+.input_nb{
+    width:15%;
+}
+.textarea_taille{
+    width:90%;
+    height:100px;
+}
+
+
+.tarif{
+    margin-top:10px;
+}
+
+.description{
+    margin-top:10px;
+}
+.commentaire{
+    margin-top:10px;
+}
+.envoyer{
+    margin-top:15px;
+}
+#voirliste{
+    margin-top:30px;
+}
+#voirliste a{
+    text-decoration: none;
+    color:black;
+    border:1px solid #aaa;
+    padding:5px;
+    background-color: yellowgreen;
+}
+
+#voirdemande{
+    margin-top:30px;
+}
+#voirdemande a{
+    text-decoration: none;
+    color:black;
+    border:1px solid #aaa;
+    padding:5px;
+    background-color: yellowgreen;
+}
+footer{
+    height:25px;
+    background-color: #ddd;
+    font-family: 'Titillium Web', sans-serif;
+    padding-left:25px;
+}
+
+header{
+    padding-left:15px;
+    font-family: 'Titillium Web', sans-serif;
+
+}
+
+caption{
+    font-size:1.2em;
+}
+th{
+    min-width: 30px;
+    max-width: 500px;
+    
+}

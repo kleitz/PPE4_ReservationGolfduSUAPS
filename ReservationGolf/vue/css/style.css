@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo|Lora|Playfair+Display|Raleway|Titillium+Web');
+
+html, body {
+
+    background-image: linear-gradient(white, #2e81ff);
+    padding: 5px;
+}
+
+.barre {
+    height: 20px;
+    background-image: radial-gradient(white, #2e81ff);
+}
+
+#titre_principal {
+    margin-top: 10px;
+    color: #2162ff;
+}
+
+#conteneur_header {
+    background-image: linear-gradient(60deg, white, #2e81ff);
+    height: 150px;
+
+}
+
+#conteneur_header, img {
+    height: 150px;
+
+}
+
+#barre_connexion {
+    height: 40px;
+    padding: 5px;
+    padding-top: 10px;
+    background-image: radial-gradient(white, #b2dede);
+}
+
+.menu_gauche {
+
+    padding: 15px;
+    height: 600px;
+
+    background-image: linear-gradient(220deg, white, #2e81ff);
+
+}
+
+#conteneur {
+    padding-left: 5px;
+}
+
+.contenu {
+    background-color: whitesmoke;
+    padding: 5px;
+
+}
