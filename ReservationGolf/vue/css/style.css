@@ -4,6 +4,7 @@ html, body {
 
     background-image: linear-gradient(white, #2e81ff);
     padding: 5px;
+    height: 1200px;
 }
 
 .barre {
@@ -34,41 +35,42 @@ html, body {
     padding: 10px;
     background-image: radial-gradient(white, #b2dede);
     color: #1f59ff;
+    margin-bottom: 10px;
 }
 
-#pseudo{
+#pseudo {
     margin-right: 10px;
     color: black;
     border-radius: 6px;
 }
 
-
-
-#mot_de_passe{
+#mot_de_passe {
     color: black;
     margin-right: 10px;
     border-radius: 6px;
 }
 
-#btn_connexion{
+#btn_connexion {
     height: 25px;
     background-image: radial-gradient(white, #b2dede);
     border-radius: 6px;
 }
 
-#connexion{
+#connexion {
     visibility: visible;
 }
 
 .menu_gauche {
-    padding: 15px;
+    padding: 10px;
     height: 600px;
-    background-image: linear-gradient(220deg, white, #2e81ff);
-
+    background: whitesmoke;
 }
 
-.inline-block{
-    display: inline-block;
+.menu_titre {
+    background-color: #2e81ff;
+    color: white;
+    padding: 5px;
+    font-weight: 600;
 }
 
 #conteneur {
@@ -77,7 +79,11 @@ html, body {
 
 .contenu {
     background-image: linear-gradient(60deg, white, #d4f5ed);
-
     padding: 5px;
+    height: 600px;
 
+}
+
+#tableau_reservation {
+    margin-left: 20px;
 }

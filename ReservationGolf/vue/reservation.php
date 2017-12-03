@@ -36,7 +36,7 @@
                 <label for="mot_de_passe">Mot de passe : </label>
                 <input type="password" id="mot_de_passe" name="mot_de_passe" value="pseudo"/>
 
-                <input type="submit" id="btn_connexion"  value="se connecter">
+                <input type="submit" id="btn_connexion" value="se connecter">
             </form>
         </div>
 
@@ -49,13 +49,19 @@
 <div id="conteneur">
     <div class="row">
 
-        <div class="col-md-2 menu_gauche">Philippe Schaeffer</div>
-
-        <div class="col-md-10 contenu">
-            <?php
-            include '../trt/calendrier.php';
-            ?>
+        <div class="col-md-2 menu_gauche">
+            <div class="menu_titre">
+                Philippe Schaeffer
+            </div>
         </div>
+        <div class="col-md-10 contenu">
+            <div id="tableau_reservation">
+                <?php
+                include '../trt/calendrier.php';
+                ?>
+            </div>
+        </div>
+
     </div>
 </div>
 
