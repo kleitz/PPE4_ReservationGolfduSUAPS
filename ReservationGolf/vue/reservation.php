@@ -57,14 +57,21 @@
         <div class="col-md-10 contenu">
             <div id="tableau_reservation">
                 <?php
-                include '../trt/calendrier.php';
-                ?>
-            </div>
-        </div>
+                require '../trt/Calendrier.php';
 
+                $cal = new Calendrier('04-12-2017', 3650);
+                $tab = $cal->charger_dates();
+                $jan2018 = $cal->tableau_date_suivantes($tab,"février","2018");
+                foreach ($jan2018 as $j){
+                    echo $j."<br>";
+                }
+                ?>
+
+            </div>
+
+        </div>
     </div>
 </div>
-
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </body>
