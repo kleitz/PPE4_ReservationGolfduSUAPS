@@ -12,6 +12,8 @@ html, body {
     background-image: radial-gradient(white, #2e81ff);
 }
 
+
+
 #titre_principal {
     margin-top: 10px;
     color: #2162ff;
@@ -20,7 +22,7 @@ html, body {
 
 #conteneur_header {
     background-image: linear-gradient(60deg, white, #2e81ff);
-    height: 150px;
+    height: 15%;
 
 }
 
@@ -62,7 +64,7 @@ html, body {
 
 .menu_gauche {
     padding: 10px;
-    height: 600px;
+    height: 700px;
     background: whitesmoke;
 }
 
@@ -79,11 +81,12 @@ html, body {
 
 .contenu {
     background-image: linear-gradient(60deg, white, #d4f5ed);
-    padding: 5px;
-    height: 600px;
+
+    height: 700px;
 
 }
 
-#tableau_reservation {
+#reservation {
     margin-left: 20px;
 }
+

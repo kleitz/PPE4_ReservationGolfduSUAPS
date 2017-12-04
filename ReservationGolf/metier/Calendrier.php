@@ -65,12 +65,51 @@ class Calendrier
         return $tableau_date;
     }
 
-    function tableau_date_suivantes($tab_dates, $mois_choisi, $annee_choisie)
+    /**
+     * Fonction permettant de retourner la semaine de notre choix.
+     *
+     * @param $num
+     *          Numéro de la semaine à afficher à partir de la date de débt d'instance de la classe.
+     *
+     * @return
+     *          Un tableau d'une semaine.
+     */
+    function charger_semaine_du_tableau($num)
+    {
+        $tab = null;
+        if ($this->_nb_de_jours > 100) {
+            $deb = ($num - 1) * 7;
+            for ($i = $deb, $j = 0; $i < $this->_nb_de_jours && $j < 7; $i++, $j++) {
+                $tab[$j] = $this->charger_dates()[$i];
+            }
+        }
+        return $tab;
+    }
+
+    /**
+     * Fonction permettant de préciser le mois dans l'ensemble des dates recouvertes par la fonction charger_date().
+     *
+     * @param $tab_dates
+     *          tableau de chaines représentant les dates au format retourné par la méthode charger_dates().
+     *
+     * @param $mois_choisi
+     *          chaine de caractère représentant le critère mois
+     *          ex : "janvier", "décembre"...
+     *
+     * @param $annee_choisie
+     *          chaine de caractère représentant le critère année
+     *          ex : "2017", "2018"...
+     *
+     * @return
+     *          Un tableau de chaine avec les dates du mois de l'année choisies parmi le tableau
+     *          ex: uniquement les jours du mois de janvier 2018
+     */
+    function charger_mois_du_tableau($tab_dates, $mois_choisi, $annee_choisie)
     {
         $tab = null;
         if ($this->_nb_de_jours > 100) {
             for ($i = 0; $i < $this->_nb_de_jours; $i++) {
-                $mois = explode(" ",$tab_dates[$i] )[2];
+                $mois = explode(" ", $tab_dates[$i])[2];
                 $annnee = explode(" ", $tab_dates[$i])[3];
 
                 if ($mois == $mois_choisi && $annnee == $annee_choisie) {

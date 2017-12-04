@@ -3,9 +3,34 @@
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="../vue/bootstrap/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../vue/bootstrap/css/bootstrap.min.css">
     <title>RESERVATION GOLF</title>
+
+    <style>
+
+        table {
+            margin-top: 10px;
+        }
+
+        td, th {
+
+        }
+
+        th {
+            background-color: #9acfea;
+            color: #0D47A1;
+            text-shadow: 2px 2px 2px white;
+        }
+
+        .res {
+            width: 200px;
+            text-align: center;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -31,12 +56,12 @@
             <form method="POST" action="../trt/connexion.php">
 
                 <label for="pseudo">Pseudo : </label>
-                <input type="text" id="pseudo" name="pseudo" value="pseudo">
+                <input type="text" id="pseudo" name="pseudo"/>
 
                 <label for="mot_de_passe">Mot de passe : </label>
-                <input type="password" id="mot_de_passe" name="mot_de_passe" value="pseudo"/>
+                <input type="password" id="mot_de_passe" name="mot_de_passe"/>
 
-                <input type="submit" id="btn_connexion" value="se connecter">
+                <input type="submit" id="btn_connexion" value="se connecter"/>
             </form>
         </div>
 
@@ -55,18 +80,42 @@
             </div>
         </div>
         <div class="col-md-10 contenu">
-            <div id="tableau_reservation">
+            <div id="reservation">
                 <?php
-                require '../trt/Calendrier.php';
+                require '../metier/Calendrier.php';
 
                 $cal = new Calendrier('04-12-2017', 3650);
-                $tab = $cal->charger_dates();
-                $jan2018 = $cal->tableau_date_suivantes($tab,"février","2018");
-                foreach ($jan2018 as $j){
-                    echo $j."<br>";
-                }
-                ?>
 
+                $sem1 = $cal->charger_semaine_du_tableau(2);
+                $sem2 = $cal->charger_semaine_du_tableau(3);
+                echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
+                echo "<thead>";
+                echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";
+                echo "</thead>";
+                foreach ($sem1 as $s) {
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>$s</td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "</tr>";
+                }
+
+                foreach ($sem2 as $s) {
+                    echo "<tbody>";
+                    echo "<tr>";
+                    echo "<td>$s</td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "<td></td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+                ?>
             </div>
 
         </div>
