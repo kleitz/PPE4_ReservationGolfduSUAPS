@@ -1,0 +1,61 @@
+//GIT - Les Bases
+
+git init
+//modifier fichier
+git status
+git add *  
+git -m commit "message"
+git --amend -m commit "message" (changer message du dernier commit)
+git -a -m commit "message"  (ajoute les fichiers déjà dans lindex, remplace donc le add plus verbeux)  (ou -am "message")
+git revert shaducommit (commit inverse)
+git reset --hard  (annule modif avant commit)
+git log
+
+git checkout shaducommit (se positionner)
+git checkout master (revenir au dernier commit)
+
+
+//GIT HUB - Repository
+
+Créer un repository sur Github
+Cloner le repository vide sur son pc
+Faire les modifs
+git add / git commit
+git push origin master
+
+//Pour récupérer
+git pull origin master
+
+//LES BRANCHES////////////////////////////////////
+
+git branch //voir les branches
+git branch nouvelleBranche
+git checkout shaNouvelleBranche //changer de branchre
+ou git checkout -b nouvelleBranche
+
+
+supprimer branche
+git branch -d (ou-D) newgitgit 
+
+//fusionnerles branches A et B -> 
+git checkout brancheA
+git merge brancheB
+
+git mergetool vimdiff //outil ihm pour les différences
+
+//Les modifications
+
+git blame fichier.txt
+git show 05b1233
+
+//Ignorer fichier (surtout des fichiers de configuration, mdp)
+.gitignore avec les nom de fichiers à ignorer (tracker et commiter aussi)
+
+//Mettre de côté momentanément
+git stash
+git stash pop (revient mais efface)git stash apply(garder)
+
+
+//Proxy
+git config --global http.proxy http://proxyuser:10.129.254.254:3128
+git config --global --unset

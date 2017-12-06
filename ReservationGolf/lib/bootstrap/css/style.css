@@ -9,10 +9,8 @@ html, body {
 
 .barre {
     height: 20px;
-    background-image: radial-gradient(white, #2e81ff);
+    background-image: radial-gradient(white, #409cff);
 }
-
-
 
 #titre_principal {
     margin-top: 10px;
@@ -56,10 +54,7 @@ html, body {
     height: 25px;
     background-image: radial-gradient(white, #b2dede);
     border-radius: 6px;
-}
 
-#connexion {
-    visibility: visible;
 }
 
 .menu_gauche {
