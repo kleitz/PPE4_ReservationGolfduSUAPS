@@ -7,6 +7,31 @@ html, body {
     height: 1200px;
 }
 
+
+table {
+    margin-top: 10px;
+}
+
+#connexion {
+    visibility: visible;
+}
+
+th {
+    background-color: #9acfea;
+    color: #0D47A1;
+    text-shadow: 2px 2px 2px white;
+}
+
+.res {
+    width: 200px;
+    text-align: center;
+}
+
+.btn-info {
+    margin-top: 10px;
+}
+
+
 .barre {
     height: 20px;
     background-image: radial-gradient(white, #409cff);

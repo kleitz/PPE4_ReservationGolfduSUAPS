@@ -78,7 +78,7 @@ class Calendrier
     {
         $tab = null;
         if ($this->_nb_de_jours > 100) {
-            $deb = ($num - 1) * 7;
+            $deb = ($num) * 7;
             for ($i = $deb, $j = 0; $i < $this->_nb_de_jours && $j < 7; $i++, $j++) {
                 $tab[$j] = $this->charger_dates()[$i];
             }

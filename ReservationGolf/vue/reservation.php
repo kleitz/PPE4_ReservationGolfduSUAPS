@@ -8,35 +8,6 @@
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
     <title>RESERVATION GOLF</title>
 
-    <style>
-
-        table {
-            margin-top: 10px;
-        }
-
-        #connexion {
-            visibility: visible;
-        }
-
-        th {
-            background-color: #9acfea;
-            color: #0D47A1;
-            text-shadow: 2px 2px 2px white;
-        }
-
-        .res {
-            width: 200px;
-            text-align: center;
-        }
-
-        .btn-info{
-            margin-top:10px;
-        }
-
-
-
-    </style>
-
 </head>
 
 <body>
@@ -51,10 +22,17 @@ if (isset($_GET['pseudo'])) {
 }
 if (isset($_GET['con'])) {
     $c = $_GET['con'];
+}else{
+    $c = 9;
 }
-if (isset($_GET['page'])) {
+if (isset($_GET['page'])&& (isset($_GET['changer_page']))) {
     $page = intval($_GET['page']);
-
+    $changer_page = ($_GET['changer_page']);
+    if ($changer_page == 'suiv') {
+        $page++;
+    }elseif ($changer_page == 'prec'){
+        $page--;
+    }
 }
 ?>
 
@@ -103,23 +81,28 @@ if (isset($_GET['page'])) {
 
         <div class="col-md-2 menu_gauche">
             <div class="menu_titre">
-                <?php if(isset($pseudo)) echo $pseudo; ?>
+                <?php if (isset($pseudo)) echo $pseudo; ?>
             </div>
         </div>
         <div class="col-md-10 contenu">
             <div id="reservation">
-                <input type=button id="btn-avant" class="btn btn-info" name="avant" value="avant"
-                       onclick="deplacer_calendrier(0)">
-                <input type=button id="btn-suivant" class="btn btn-info" name="apres" value="après"
-                       onclick="deplacer_calendrier(<?php echo $page ?>)">
+                <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=prec&page= <?php echo $page ?>"> <input type=button id="btn-avant"
+                                                                            class="btn btn-info" value="avant"
+                                                                            name="avant"></a>
+                <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=suiv&page= <?php
+                echo $page ?>"> <input type=button id="btn-suivant"
+                                       class="btn btn-info"
+                                       value="suivant"
+                                       name="suivant"></a>
+
                 <?php
 
                 require '../metier/Calendrier.php';
 
                 $cal = new Calendrier('04-12-2017', 3650);
 
-                $sem1 = $cal->charger_semaine_du_tableau(1 + $page);
-                $sem2 = $cal->charger_semaine_du_tableau(2 + $page);
+                $sem1 = $cal->charger_semaine_du_tableau($page);
+                $sem2 = $cal->charger_semaine_du_tableau($page + 1);
                 echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
                 echo "<thead>";
                 echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";

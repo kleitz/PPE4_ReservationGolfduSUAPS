@@ -58,4 +58,4 @@ git stash pop (revient mais efface)git stash apply(garder)
 
 //Proxy
 git config --global http.proxy http://proxyuser:10.129.254.254:3128
-git config --global --unset
+git config --global --unset http.proxy
