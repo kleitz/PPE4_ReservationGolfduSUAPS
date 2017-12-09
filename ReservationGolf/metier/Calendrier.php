@@ -162,7 +162,6 @@ class Calendrier
     }
 
 
-
     function charger_tableau_datesFR()
     {
         $tableau_date = null;
@@ -196,6 +195,30 @@ class Calendrier
         return $tab;
     }
 
+    static function date_du_jour_en_chaine()
+    {
+        $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE, 'Europe/Paris', IntlDateFormatter::GREGORIAN);
+
+        $formatter->setPattern("EEEE d MMMM y");
+        $date = new DateTime();
+        return $formatter->format($date);
+    }
+
+    static function convertir_date_chaineFR_ENG($date_FR)
+    {
+        $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE, 'Europe/Paris', IntlDateFormatter::GREGORIAN);
+
+        $formatter->setPattern("EEEE d MMMM y");
+        try {
+            $date = new DateTime($formatter->format($date_FR));
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            exit(1);
+        }
+        return $date->format('Y-m-d');
+    }
 }
 
 

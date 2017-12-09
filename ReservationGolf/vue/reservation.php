@@ -15,6 +15,8 @@
 <?php
 session_start();
 
+require '../metier/Calendrier.php';
+
 $page = 0;
 if (isset($_GET['pseudo'])) {
     $_SESSION['pseudo'] = $_GET['pseudo'];
@@ -51,9 +53,9 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
         </div>
     </div>
 </div>
-<div class="barre"></div>
-
-
+<div class="barre barre_date">
+    <?php echo Calendrier::date_du_jour_en_chaine(); ?>
+</div>
 <div id="barre_connexion">
     <div class="row">
         <div id="connexion" class="col-md-6">
@@ -97,72 +99,86 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
                     } ?>">
                         <input type=button id="btn-avant"
                                class="btn btn-info" value="précédent"
-                               name="precedent"></a>
+                               name="precedent"/></a>
                     <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=suiv&page= <?php
                     echo $page ?>"> <input type=button id="btn-suivant"
                                            class="btn btn-info"
                                            value="suivant"
-                                           name="suivant"></a>
+                                           name="suivant"/></a>
+
+                    <input type=button id="btn-validation"
+                           class="btn btn-success"
+                           value="validation"
+                           name="validation"/>
                 </div>
-                <?php
-
-                require '../metier/Calendrier.php';
-
-                $cal = new Calendrier('04-12-2017', 3650);
-
-                $sem1 = $cal->charger_semaine_du_tableau($page);
-                $sem2 = $cal->charger_semaine_du_tableau($page + 1);
-                $classe_sem1 = $cal->charger_classes_du_tableau($page);
-                $classe_sem2 = $cal->charger_classes_du_tableau($page + 1);
-
-                echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
-                echo "<thead>";
-                echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                $cpt = 0;
-                foreach ($sem1 as $s) {
-
-                    if ($cpt == 6) {
-                        echo "<tr class='dimanche'>";
-
-                    } else {
-                        echo
-                        "<tr>";
-                    }
-                    echo "<td class='col-date'>$s</td>";
-                    echo "<td class='res1_" . $classe_sem1[$cpt] . "'></td>";
-                    echo "<td class='res2_" . $classe_sem1[$cpt] . "'></td>";
-                    echo "<td class='res3_" . $classe_sem1[$cpt] . "'></td>";
-                    echo "<td class='res4_" . $classe_sem1[$cpt] . "'></td>";
-                    echo "</tr>";
-                    $cpt++;
-                }
-                // echo "<tr style='background-color: #409cff;'><td ></td><td></td><td></td>";
-                //echo "<td></td><td></td></tr>";
-                $cpt = 0;
-                foreach ($sem2 as $s) {
-
-                    if ($cpt == 6) {
-                        echo "<tr class='dimanche'>";
-
-                    } else {
-                        echo
-                        "<tr>";
-                    }
-                    echo "<td class='col-date'>$s</td>";
-                    echo "<td class='res1_" . $classe_sem2[$cpt] . "'></td>";
-                    echo "<td class='res2_" . $classe_sem2[$cpt] . "'></td>";
-                    echo "<td class='res3_" . $classe_sem2[$cpt] . "'></td>";
-                    echo "<td class='res4_" . $classe_sem2[$cpt] . "'></td>";
-                    $cpt++;
-                }
-                echo "</tbody>";
-                echo "</table>";
-                ?>
             </div>
 
+            <?php
+
+
+            $cal = new Calendrier('04-12-2017', 3650);
+
+            $sem1 = $cal->charger_semaine_du_tableau($page);
+            $sem2 = $cal->charger_semaine_du_tableau($page + 1);
+            $classe_sem1 = $cal->charger_classes_du_tableau($page);
+            $classe_sem2 = $cal->charger_classes_du_tableau($page + 1);
+
+            echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
+            echo "<thead>";
+            echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            $cpt = 0;
+            foreach ($sem1 as $s) {
+
+                if (Calendrier::date_du_jour_en_chaine() == $s) {
+                    echo "<tr class='jour'>";
+                }else if ($cpt == 5) {
+                    echo "<tr class='samedi'>";
+                } else if ($cpt == 6) {
+                    echo "<tr class='dimanche'>";
+
+                } else {
+                    echo
+                    "<tr>";
+                }
+
+
+                echo "<td class='col-date'>$s</td>";
+
+                echo "<td class='res1_" . $classe_sem1[$cpt] . "'></td>";
+                echo "<td class='res2_" . $classe_sem1[$cpt] . "'></td>";
+                echo "<td class='res3_" . $classe_sem1[$cpt] . "'></td>";
+                echo "<td class='res4_" . $classe_sem1[$cpt] . "'></td>";
+                echo "</tr>";
+                $cpt++;
+            }
+            // echo "<tr style='background-color: #409cff;'><td ></td><td></td><td></td>";
+            //echo "<td></td><td></td></tr>";
+            $cpt = 0;
+            foreach ($sem2 as $s) {
+
+                if ($cpt == 5) {
+                    echo "<tr class='samedi'>";
+                } else if ($cpt == 6) {
+                    echo "<tr class='dimanche'>";
+
+                } else {
+                    echo
+                    "<tr>";
+                }
+                echo "<td class='col-date'>$s</td>";
+                echo "<td class='res1_" . $classe_sem2[$cpt] . "'></td>";
+                echo "<td class='res2_" . $classe_sem2[$cpt] . "'></td>";
+                echo "<td class='res3_" . $classe_sem2[$cpt] . "'></td>";
+                echo "<td class='res4_" . $classe_sem2[$cpt] . "'></td>";
+                $cpt++;
+            }
+            echo "</tbody>";
+            echo "</table>";
+            ?>
         </div>
+
     </div>
 </div>
 
@@ -178,7 +194,6 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
     } else if (get_con === 2) {
         alert("Utilisateur incorrect");
     }
-
 
 
 </script>

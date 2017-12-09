@@ -19,14 +19,21 @@ th {
     background-color: #9acfea;
     color: #0D47A1;
     text-shadow: 2px 2px 2px white;
+    font-size: 1.1em;
+    font-family: 'Calibri Light';
 }
 
-td{
-    text-align: center;
-
-}
-.col-date{
+.col-date {
     text-align: left;
+    font-size: 1em;
+    color: rgba(14, 8, 188, 0.75);
+}
+
+td {
+    text-align: center;
+    font-size: 1em;
+    color: #5b32bc;
+    font-family: 'Calibri Light';
 }
 
 .res {
@@ -38,9 +45,21 @@ td{
     margin-top: 10px;
 }
 
+.btn-success {
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
 .barre {
     height: 20px;
     background-image: radial-gradient(white, #409cff);
+}
+
+.barre_date{
+    text-align: right;
+    padding-right: 10px;
+    font-size: 1em;
+    color: rgba(14, 8, 188, 0.75);
 }
 
 #titre_principal {
@@ -110,11 +129,18 @@ td{
     height: 700px;
 }
 
+.samedi {
+    background-color: #dddddd;
+}
 .dimanche {
-    background-color: darkgray;
+    background-color: #cccccc;
 }
 
 .changer_date {
     margin-bottom: 20px;
 }
 
+.jour{
+    font-style:oblique;
+    background-color: #d8ff8f;
+}
