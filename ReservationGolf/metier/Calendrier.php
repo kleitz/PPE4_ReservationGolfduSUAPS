@@ -122,6 +122,8 @@ class Calendrier
     }
 
     /**
+     * Fonction permettant de passer d'une date au format ENG - SQL au format FR.
+     *
      * @param $date_ENG
      *             La date au format ENG, SQL : 2017-12-31.
      *
@@ -140,6 +142,8 @@ class Calendrier
     }
 
     /**
+     * Fonction permettant de passer d'une date au format FR au format ENG - SQL
+     *
      * @param $date_FR
      *             La date au format FR : 31-12-2017.
      *
@@ -155,6 +159,41 @@ class Calendrier
             exit(1);
         }
         return $date->format('Y-m-d');
+    }
+
+
+
+    function charger_tableau_datesFR()
+    {
+        $tableau_date = null;
+        $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE, 'Europe/Paris', IntlDateFormatter::GREGORIAN);
+
+        $formatter->setPattern("d-M-yy");
+
+        for ($j = 0; $j < $this->_nb_de_jours; $j++) {
+            try {
+                $date = new DateTime($this->_date_debut . '+ ' . intval($j) . ' day');
+                $tableau_date[$j] = $formatter->format($date);
+                //echo $tableau_date[$j] . '<br>';
+            } catch (Exception $e) {
+                echo $e->getMessage();
+                exit(1);
+            }
+        }
+        return $tableau_date;
+    }
+
+    function charger_classes_du_tableau($num)
+    {
+        $tab = null;
+        if ($this->_nb_de_jours > 100) {
+            $deb = ($num) * 7;
+            for ($i = $deb, $j = 0; $i < $this->_nb_de_jours && $j < 7; $i++, $j++) {
+                $tab[$j] = $this->charger_tableau_datesFR()[$i];
+            }
+        }
+        return $tab;
     }
 
 }

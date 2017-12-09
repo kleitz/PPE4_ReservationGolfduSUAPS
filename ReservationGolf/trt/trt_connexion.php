@@ -9,6 +9,6 @@ require '../bdd/bdd_connexion.php';
 $res = verif_mdp($pseudo, $mdp);
 
 if ($res == 0) {
-    header("Location: http://localhost/Git/PPE4_ReservationGolfduSUAPS/ReservationGolf/vue/reservation.php?con=$res&pseudo=$pseudo");
+    header("Location: http://localhost/Git/PPE4/ReservationGolf/vue/reservation.php?con=$res&pseudo=$pseudo");
     exit();
 }

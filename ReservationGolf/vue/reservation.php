@@ -22,15 +22,15 @@ if (isset($_GET['pseudo'])) {
 }
 if (isset($_GET['con'])) {
     $c = $_GET['con'];
-}else{
+} else {
     $c = 9;
 }
-if (isset($_GET['page'])&& (isset($_GET['changer_page']))) {
+if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
     $page = intval($_GET['page']);
     $changer_page = ($_GET['changer_page']);
     if ($changer_page == 'suiv') {
         $page++;
-    }elseif ($changer_page == 'prec'){
+    } elseif ($changer_page == 'prec') {
         $page--;
     }
 }
@@ -81,20 +81,29 @@ if (isset($_GET['page'])&& (isset($_GET['changer_page']))) {
 
         <div class="col-md-2 menu_gauche">
             <div class="menu_titre">
-                <?php if (isset($pseudo)) echo $pseudo; ?>
+                <?php if (isset($pseudo)) {
+                    echo $pseudo;
+                } ?>
             </div>
         </div>
         <div class="col-md-10 contenu">
             <div id="reservation">
-                <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=prec&page= <?php echo $page ?>"> <input type=button id="btn-avant"
-                                                                            class="btn btn-info" value="avant"
-                                                                            name="avant"></a>
-                <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=suiv&page= <?php
-                echo $page ?>"> <input type=button id="btn-suivant"
-                                       class="btn btn-info"
-                                       value="suivant"
-                                       name="suivant"></a>
-
+                <div class="changer_date">
+                    <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=prec&page= <?php
+                    if ($page > 0) {
+                        echo $page;
+                    } else {
+                        echo '1';
+                    } ?>">
+                        <input type=button id="btn-avant"
+                               class="btn btn-info" value="précédent"
+                               name="precedent"></a>
+                    <a href="reservation.php?con=<?php echo $c ?>&pseudo=<?php echo $pseudo ?>&changer_page=suiv&page= <?php
+                    echo $page ?>"> <input type=button id="btn-suivant"
+                                           class="btn btn-info"
+                                           value="suivant"
+                                           name="suivant"></a>
+                </div>
                 <?php
 
                 require '../metier/Calendrier.php';
@@ -103,32 +112,50 @@ if (isset($_GET['page'])&& (isset($_GET['changer_page']))) {
 
                 $sem1 = $cal->charger_semaine_du_tableau($page);
                 $sem2 = $cal->charger_semaine_du_tableau($page + 1);
+                $classe_sem1 = $cal->charger_classes_du_tableau($page);
+                $classe_sem2 = $cal->charger_classes_du_tableau($page + 1);
+
                 echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
                 echo "<thead>";
                 echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";
                 echo "</thead>";
+                echo "<tbody>";
+                $cpt = 0;
                 foreach ($sem1 as $s) {
-                    echo "<tbody>";
-                    echo "<tr>";
-                    echo "<td>$s</td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "</tr>";
-                }
-                echo "<tr><td style='background-color: #1b6d85'></td><td style='background-color: #1b6d85'></td><td style='background-color: #1b6d85'></td>";
-                echo "<td style='background-color: #1b6d85'></td><td style='background-color: #1b6d85'></td></tr>";
 
-                foreach ($sem2 as $s) {
-                    echo "<tbody>";
-                    echo "<tr>";
-                    echo "<td>$s</td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
+                    if ($cpt == 6) {
+                        echo "<tr class='dimanche'>";
+
+                    } else {
+                        echo
+                        "<tr>";
+                    }
+                    echo "<td class='col-date'>$s</td>";
+                    echo "<td class='res1_" . $classe_sem1[$cpt] . "'></td>";
+                    echo "<td class='res2_" . $classe_sem1[$cpt] . "'></td>";
+                    echo "<td class='res3_" . $classe_sem1[$cpt] . "'></td>";
+                    echo "<td class='res4_" . $classe_sem1[$cpt] . "'></td>";
                     echo "</tr>";
+                    $cpt++;
+                }
+                // echo "<tr style='background-color: #409cff;'><td ></td><td></td><td></td>";
+                //echo "<td></td><td></td></tr>";
+                $cpt = 0;
+                foreach ($sem2 as $s) {
+
+                    if ($cpt == 6) {
+                        echo "<tr class='dimanche'>";
+
+                    } else {
+                        echo
+                        "<tr>";
+                    }
+                    echo "<td class='col-date'>$s</td>";
+                    echo "<td class='res1_" . $classe_sem2[$cpt] . "'></td>";
+                    echo "<td class='res2_" . $classe_sem2[$cpt] . "'></td>";
+                    echo "<td class='res3_" . $classe_sem2[$cpt] . "'></td>";
+                    echo "<td class='res4_" . $classe_sem2[$cpt] . "'></td>";
+                    $cpt++;
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -152,13 +179,10 @@ if (isset($_GET['page'])&& (isset($_GET['changer_page']))) {
         alert("Utilisateur incorrect");
     }
 
-    var btnsuivant = document.getElementById("btn-suivant");
-    btnsuivant.addEventListener("click", function () {
-        <?php $page++; ?>
-    });
+
+
 </script>
-<script type="text/javascript" src="js/script.js"
 <script type="text/javascript" src="../lib/bootstrap/js/jquery.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="../lib/bootstrap/js/script.js"></script>
 </body>
 </HTML>
