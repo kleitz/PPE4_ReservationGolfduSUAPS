@@ -136,6 +136,10 @@ td {
     background-color: #cccccc;
 }
 
+.selection {
+    background-color: #61ff3d;
+}
+
 .changer_date {
     margin-bottom: 20px;
 }
@@ -143,4 +147,9 @@ td {
 .jour{
     font-style:oblique;
     background-color: #d8ff8f;
+}
+
+
+#btn-validation{
+    visibility: hidden;
 }

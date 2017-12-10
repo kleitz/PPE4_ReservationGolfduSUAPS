@@ -110,6 +110,7 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
                            class="btn btn-success"
                            value="validation"
                            name="validation"/>
+
                 </div>
             </div>
 
@@ -125,7 +126,7 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
 
             echo "<table class='table table-responsive table-bordered table-stripped' id='tableau_reservation'>";
             echo "<thead>";
-            echo "<tr><th>Date</th><th class='res'>Réservation n°1</th><th class='res'>Réservation n°2</th><th class='res'>Réservation n°3</th><th class='res'>Réservation n°4</th></tr>";
+            echo "<tr><th>Date</th><th class='res'>Joueur n°1</th><th class='res'>Joueur n°2</th><th class='res'>Joueur n°3</th><th class='res'>Joueur n°4</th></tr>";
             echo "</thead>";
             echo "<tbody>";
             $cpt = 0;
@@ -133,7 +134,7 @@ if (isset($_GET['page']) && (isset($_GET['changer_page']))) {
 
                 if (Calendrier::date_du_jour_en_chaine() == $s) {
                     echo "<tr class='jour'>";
-                }else if ($cpt == 5) {
+                } else if ($cpt == 5) {
                     echo "<tr class='samedi'>";
                 } else if ($cpt == 6) {
                     echo "<tr class='dimanche'>";

@@ -162,13 +162,13 @@ class Calendrier
     }
 
 
-    function charger_tableau_datesFR()
+    function charger_tableau_datesENG()
     {
         $tableau_date = null;
         $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG,
             IntlDateFormatter::NONE, 'Europe/Paris', IntlDateFormatter::GREGORIAN);
 
-        $formatter->setPattern("d-M-yy");
+        $formatter->setPattern("y-M-d");
 
         for ($j = 0; $j < $this->_nb_de_jours; $j++) {
             try {
@@ -189,7 +189,7 @@ class Calendrier
         if ($this->_nb_de_jours > 100) {
             $deb = ($num) * 7;
             for ($i = $deb, $j = 0; $i < $this->_nb_de_jours && $j < 7; $i++, $j++) {
-                $tab[$j] = $this->charger_tableau_datesFR()[$i];
+                $tab[$j] = $this->charger_tableau_datesENG()[$i];
             }
         }
         return $tab;
